@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- layout-top-navigation.html  Tue, 07 Jan 2020 03:35:42 GMT -->
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Dr. Kay AI &rsaquo; Disease Prediction  &mdash; Drug Recommendation Web Application</title>
+    
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="{% static 'homassets/assets/img/doctor-kay.png' %}">
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{% static 'homassets/assets/modules/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/modules/fontawesome/css/all.min.css' %}">
+    
+    <!-- CSS Libraries -->
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'homassets/assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'homassets/assets/css/components.min.css' %}">
+    </head>
+    
+<body class="layout-3" >
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<div id="app">
+    <div class="main-wrapper container">
+        <div class="navbar-bg"></div>
+
+        <!-- Start app top navbar -->
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <div class="container">
+                <a href="#" class="navbar-brand sidebar-gone-hide">Dr. Kay AI</a>
+                <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+                
+                <ul class="navbar-nav navbar-right">
+                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                        <img alt="image" src="{% static 'images/user.png' %}" class="rounded-circle mr-1">
+                        <div class="d-sm-none d-lg-inline-block">Hi, {{ first_name }} {{ last_name }}</div></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-title">Logged in 5 min ago</div>
+                        <a href="#" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Start top menu -->
+        <nav class="navbar navbar-secondary navbar-expand-lg">
+            <div class="container">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link"><i class="far fa-heart"></i><span>Home</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Result</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Drug Recommendation</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <h1>Welcome to Dr. Kay AI</h1>
+                    <div class="section-header-breadcrumb">
+                        <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                        <div class="breadcrumb-item"><a href="#">Layout</a></div>
+                        <div class="breadcrumb-item">Top Navigation</div>
+                    </div>
+                </div>
+
+                <div class="section-body">
+                    <h2 class="section-title">Disease Prediction and Drug Recommendation App</h2>
+                    <!-- <p class="section-lead">This page is just an example for you to create your own page.</p> -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Here is the result of the Prediction</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h6>The encoded data you entered are: {{symptoms_list}}</h6>
+                                    <h4>The predicted disease is <span style="color: red;">{{predicted_disease}}</span></h4>
+
+                                    <form class="px-5 mt-3" action="{% url 'drug-recommendation' %}">
+                                        <input type="text" class="form-control bg-white-inverse text-center" placeholder="Disease" value="{{predicted_disease}}" name="disease" style="font-size: larger; font-weight: bolder; display: none;" readonly>
+                                            <div class="mt-3">
+                                                                <!-- <p
+                                                                        style="color: white; font-size: larger;">Prediction
+                                                                    Accuracy
+                                                                    is :
+                                                                    {{accuracy}}
+                                                                </p> -->
+                                                            <input type="submit" class="btn btn-primary" value="Get drug recommendation" name="">
+
+
+
+                                                        </div>
+                                                        </form>
+
+
+                                </div>
+                                <div class="col-md-5 text-center">
+                                    <br>
+                                    <img src="{% static 'homassets/assets/img/doctor-kay.png' %}" alt="" style="height: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Start app Footer part -->
+        <footer class="main-footer">
+            <div class="footer-left">
+                 {% comment %} <div class="bullet"></div>  <a href="#">Developed by Kay Kay</a> {% endcomment %}
+            </div>
+            <div class="footer-right">
+            
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- General JS Scripts -->
+<script src="{% static 'homassets/assets/bundles/lib.vendor.bundle.js' %}"></script>
+<script src="{% static 'homassets/js/CodiePie.js' %}"></script>
+
+<!-- JS Libraries -->
+
+<!-- Page Specific JS File -->
+
+<!-- Template JS File -->
+<script src="{% static 'homassets/js/scripts.js' %}"></script>
+<script src="{% static 'homassetss/js/custom.js' %}"></script>
+</body>
+
+<!-- layout-top-navigation.html  Tue, 07 Jan 2020 03:35:42 GMT -->
+</html>
